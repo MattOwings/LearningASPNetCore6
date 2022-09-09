@@ -1,7 +1,7 @@
-﻿using AbbyWeb.Model;
+﻿using Abby.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AbbyWeb.Data
+namespace Abby.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -10,5 +10,6 @@ namespace AbbyWeb.Data
 
         }
         public DbSet<Category> Category { get; set; }
+        public DbSet<FoodType> FoodType { get; set; }
     }
 }

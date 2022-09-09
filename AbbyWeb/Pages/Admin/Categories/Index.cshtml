@@ -1,5 +1,9 @@
 ﻿@page
-@model AbbyWeb.Pages.Categories.IndexModel
+@model AbbyWeb.Pages.Admin.Categories.IndexModel
+
+@if(TempData["success"] != null) {
+    <div class="alert alert-success" role="alert">@TempData["success"]</div>
+}
 
 <div class="container p-3">
     <div class="row pt-4">
@@ -18,6 +22,7 @@
             <tr>
                 <th>Category Name</th>
                 <th>Display Order</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +30,12 @@
             <tr>
                 <td width="50%">@category.Name</td>
                 <td width="30%">@category.DisplayOrder</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-page="Edit" asp-route-id="@category.Id" class="btn btn-primary mx-2">Edit</a>
+                        <a asp-page="Delete" asp-route-id="@category.Id" class="btn btn-primary mx-2">Delete</a>
+                    </div>
+                </td>
             </tr>
             }
         </tbody>

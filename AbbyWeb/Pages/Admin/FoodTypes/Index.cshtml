@@ -1,0 +1,41 @@
+﻿@page
+@model AbbyWeb.Pages.Admin.FoodTypes.IndexModel
+
+@if(TempData["success"] != null) {
+    <div class="alert alert-success" role="alert">@TempData["success"]</div>
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Food Type List</h2>
+        </div>
+        <div class="col-6">
+            <a asp-page="create" class="btn btn-primary">Create New Food Type</a>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <table class="table table-bordered table-striped" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Edit and Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model.FoodTypes) {
+            <tr>
+                <td width="50%">@category.Name</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-page="Edit" asp-route-id="@category.Id" class="btn btn-primary mx-2">Edit</a>
+                        <a asp-page="Delete" asp-route-id="@category.Id" class="btn btn-primary mx-2">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
